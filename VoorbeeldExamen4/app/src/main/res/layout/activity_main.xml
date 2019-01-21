@@ -140,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnSeeStats"
+            android:onClick="SeeStat"
             android:text="See stats"
             />
     </LinearLayout>

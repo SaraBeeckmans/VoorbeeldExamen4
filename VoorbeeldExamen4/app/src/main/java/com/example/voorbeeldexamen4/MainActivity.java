@@ -1,5 +1,6 @@
 package com.example.voorbeeldexamen4;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,10 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Game game;
     private Button[][] buttons = new Button[3][3];
+    String selectedPokemon;
+    TextView pokemontext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         game = new Game();
         game.createPokemons();
 
-        TextView pokemontext = (TextView) findViewById(R.id.txtPokemon);
-        pokemontext.setText(game.RandomNamePicker());
+        pokemontext = (TextView) findViewById(R.id.txtPokemon);
+        selectedPokemon=game.RandomNamePicker();
+        pokemontext.setText(selectedPokemon);
 
 
 
@@ -35,9 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 buttons[i][j].setOnClickListener(this);
 
                 buttons[i][j].setTag(""+i+j);
-                buttons[i][j].setText(game.getXO(i,j));
+
             }
         }
+
 
     }
 
@@ -50,7 +57,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int x = Character.getNumericValue(tag.charAt(0));
         int y = Character.getNumericValue(tag.charAt(1));
 
-        Toast toast = Toast.makeText(getApplicationContext(), "x=" + Integer.toString(x)+ " y="+Integer.toString(y), Toast.LENGTH_SHORT);
-        toast.show();
+        TextView txtStreak = (TextView) findViewById(R.id.txtStreak);
+        txtStreak.setText("Current streak: "+ Integer.toString(game.CheckStreak(x,y,selectedPokemon)));
+
+        TextView txtHighscore = (TextView) findViewById(R.id.txtHighscore);
+        txtHighscore.setText("Highscore: "+ Integer.toString(game.CheckHighscore()));
+
+        //game.CountMisandHits(x,y,);
+
+        selectedPokemon=game.RandomNamePicker();
+        pokemontext.setText(selectedPokemon);
+
+    }
+
+    public void SeeStat(View v){
+        Intent i = new Intent(this, ListActivity.class);
+        i.putExtra("highscore", game.CheckHighscore());
+        startActivity(i);
     }
 }

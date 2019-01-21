@@ -1,6 +1,13 @@
 package com.example.voorbeeldexamen4;
 
 public class Pokemon {
+    public Pokemon(String name, String imageName){
+        this.name = name;
+        this.imageName = imageName;
+
+    }
+
+
     public String getName() {
         return name;
     }
@@ -17,10 +24,27 @@ public class Pokemon {
         this.imageName = imageName;
     }
 
-    public Pokemon(String name, String imageName){
-        this.name = name;
-        this.imageName = imageName;
-    }
+
     private String name;
     private String imageName;
+
+    public int getHit() {
+        return hit;
+    }
+
+    public void setHit(int hit) {
+        this.hit = hit;
+    }
+
+    private int hit = 0;
+
+    public int getMis() {
+        return mis;
+    }
+
+    public void setMis(int mis) {
+        this.mis = mis;
+    }
+
+    private int mis = 0;
 }

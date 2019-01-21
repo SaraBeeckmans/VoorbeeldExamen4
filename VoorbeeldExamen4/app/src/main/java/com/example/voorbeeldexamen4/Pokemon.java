@@ -1,24 +1,26 @@
 package com.example.voorbeeldexamen4;
 
 public class Pokemon {
-    public String getName(String pokemonName) {
+    public String getName() {
         return name;
     }
 
-    public String setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return name;
     }
 
     public String getImageName() {
         return imageName;
     }
 
-    public String setImageName(String imageName) {
+    public void setImageName(String imageName) {
         this.imageName = imageName;
-        return imageName;
     }
 
+    public Pokemon(String name, String imageName){
+        this.name = name;
+        this.imageName = imageName;
+    }
     private String name;
     private String imageName;
 }

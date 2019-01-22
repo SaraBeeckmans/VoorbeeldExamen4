@@ -25,6 +25,13 @@ public class Pokemon {
     }
 
 
+    public String getPokemon(int teller){
+        String getpok = "";
+        getpok = getName()+": Hits ="+getHit()+" Mis ="+getMis();
+
+        return getpok;
+    }
+
     private String name;
     private String imageName;
 

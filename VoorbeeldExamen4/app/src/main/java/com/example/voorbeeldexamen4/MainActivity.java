@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void SeeStat(View v){
         Intent i = new Intent(this, ListActivity.class);
         i.putExtra("highscore", game.CheckHighscore());
-
+        startActivity(i);
 
     }
 }

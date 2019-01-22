@@ -29,7 +29,7 @@ ListView SimpleList;
 
 
         for (int i=0; i<9; i++){
-
+            arrayList.add(Game.pokemonlist.get(i).getPokemon(i));
         }
 
 

@@ -12,9 +12,9 @@ public class Game {
     private int highscore=0;
 
 
-    public ArrayList<Pokemon> pokemonlist =  new ArrayList<Pokemon>();
+    public static ArrayList<Pokemon> pokemonlist =  new ArrayList<Pokemon>();
 
-    public void createPokemons(){
+    public  void createPokemons(){
 
         pokemonlist.add(new Pokemon("name1", "button_00"));
         pokemonlist.add(new Pokemon("name2", "button_01"));
@@ -79,11 +79,6 @@ public class Game {
         }
     }
 
-    public String getPokemon(int teller){
-        String getpok = "";
-        getpok = pokemonlist.get(teller).getName()+": Hits ="+pokemonlist.get(teller).getHit()+" Mis ="+pokemonlist.get(teller).getMis();
 
-        return getpok;
-    }
 
 }

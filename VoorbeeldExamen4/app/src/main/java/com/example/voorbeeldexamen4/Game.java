@@ -8,7 +8,7 @@ import java.util.Random;
 public class Game {
     private char[][] gameMatrix = new char[3][3];
     private int streak = 0;
-    int n =0;
+    public int n =0;
     private int highscore=0;
 
 
@@ -28,7 +28,7 @@ public class Game {
 
     }
 
-   
+
     public String getXO(int x, int y){
         return String.valueOf(gameMatrix[x][y]);
     }
@@ -62,14 +62,28 @@ public class Game {
         return highscore;
     }
 
-    public void CountMisandHits(int x, int y,int mis,int hit){
-        String buttonClicked = "button_"+Integer.toString(x)+Integer.toString(y);
-        if(buttonClicked.equals(pokemonlist.get(n).getImageName()))
-            hit++;
-        else
-            mis++;
 
+    public void CountHitsAndMisses(int x, int y){
+        String buttonClicked = "button_"+Integer.toString(x)+Integer.toString(y);
+        int hit = pokemonlist.get(n).getHit();
+        int mis = pokemonlist.get(n).getMis();
+        if(buttonClicked.equals(pokemonlist.get(n).getImageName()))
+        {
+            hit++;
+            pokemonlist.get(n).setMis(hit);
+        }
+        else
+        {
+            mis++;
+            pokemonlist.get(n).setMis(mis);
+        }
     }
 
+    public String getPokemon(int teller){
+        String getpok = "";
+        getpok = pokemonlist.get(teller).getName()+": Hits ="+pokemonlist.get(teller).getHit()+" Mis ="+pokemonlist.get(teller).getMis();
+
+        return getpok;
+    }
 
 }

@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button[][] buttons = new Button[3][3];
     String selectedPokemon;
     TextView pokemontext;
+    private int hit = 0;
+    private int mis=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView txtHighscore = (TextView) findViewById(R.id.txtHighscore);
         txtHighscore.setText("Highscore: "+ Integer.toString(game.CheckHighscore()));
 
-        //game.CountMisandHits(x,y,);
+        game.CountHitsAndMisses(x,y);
 
         selectedPokemon=game.RandomNamePicker();
         pokemontext.setText(selectedPokemon);
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void SeeStat(View v){
         Intent i = new Intent(this, ListActivity.class);
         i.putExtra("highscore", game.CheckHighscore());
-        startActivity(i);
+
+
     }
 }
